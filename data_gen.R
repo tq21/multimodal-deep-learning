@@ -57,3 +57,5 @@ write.csv(DT_labs[!is.na(T_EVENT)], file = "data/lab_events.csv", row.names = FA
 ## Construct time stamp --------------------------------------------------------
 
 # Question: no event time for diagnosis? ignore diagnosis table for now.
+
+# todo: add time stamp for lab events
