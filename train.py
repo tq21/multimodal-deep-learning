@@ -39,21 +39,31 @@ criterion = nn.BCELoss()
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 
 # Train the model
-num_epochs = 10
-for epoch in range(num_epochs):
-    running_loss = 0.0
+running_loss = 0.0
+for epoch in range(10):  # loop over the dataset multiple times
     for i, data in enumerate(train_dataloader):
-        X, y = data
-        X = [x.to(device) for x in X]
-        y = y.to(device)
+        # get the inputs; data is a list of [patient, encounter, lab, y]
+        X_patient, X_encounter, X_lab, y = data
+        X_patient = [x.to(device) for x in X_patient]
+        X_encounter = [x.to(device) for x in X_encounter]
+        X_lab = [x.to(device) for x in X_lab]
+        y = y.to(device).double()
+
+        # zero the parameter gradients
         optimizer.zero_grad()
-        outputs = model(X)
+
+        # forward + backward + optimize
+        outputs = model([X_patient, X_encounter, X_lab])
         loss = criterion(outputs, y)
         loss.backward()
         optimizer.step()
+
+        # print statistics
         running_loss += loss.item()
-        if i % 100 == 99:
-            print('[%d, %5d] loss: %.3f' % (epoch + 1, i + 1, running_loss / 100))
+        if i % 10 == 9: # print every 5 mini-batches
+            print('[%d, %5d] loss: %.3f' %
+                    (epoch + 1, i + 1, running_loss / 10))
+            running_loss = 0.0
             running_loss = 0.0
 
 # TODO: Add evaluation code
