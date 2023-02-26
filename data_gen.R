@@ -1,6 +1,28 @@
+#' Script that generates input data for deep learning model\
+#' 
+#' INPUT: /data/raw/patients.csv.gz
+#'        /data/raw/admissions.csv.gz
+#'        /data/raw/labevents.csv.gz
+#'        /data/raw/diagnoses_icd.csv.gz
+#'  
+#' OUTPUT: /data/processed/01_static_patient.csv
+#'         /data/processed/02_static_admission.csv
+#'         /data/processed/03_dynamic_lab.csv
+#'         /data/processed/04_dynamic_diagnosis.csv
 library(data.table)
 library(lubridate)
 library(mltools)
+
+## PROCESS ALL DATA ------------------------------------------------------------
+source("data_gen_scripts/01_static_patient.R")
+source("data_gen_scripts/02_static_admission.R")
+source("data_gen_scripts/03_dynamic_lab.R")
+source("data_gen_scripts/04_dynamic_diagnosis.R")
+
+
+
+
+
 
 ## Load data -------------------------------------------------------------------
 DT_patients <- fread("sample_data/patients_sample.csv")
