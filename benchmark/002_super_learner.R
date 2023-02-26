@@ -20,7 +20,6 @@ suggested_learners <- list(
   ridge_fast = make_learner(Lrnr_glmnet, nfold = 3, alpha = 0),
   enet_fast = make_learner(Lrnr_glmnet, nfold = 3, alpha = 0.5),
   earth = make_learner(Lrnr_earth),
-  bayesglm = make_learner(Lrnr_bayesglm),
   gam = Lrnr_pkg_SuperLearner$new(SL_wrapper = "SL.gam"),
   bart = Lrnr_dbarts$new(ndpost = 1000, verbose = FALSE),
   xgb_SL = make_learner(Lrnr_xgboost, nrounds = 1000, max_depth = 4, eta = 0.1)
