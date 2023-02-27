@@ -5,9 +5,6 @@ library(future)
 library(dplyr)
 options(sl3.verbose = TRUE)
 
-cpus <- 30
-plan(multisession, workers = cpus, gc = TRUE)
-
 load("/global/scratch/users/skyqiu/multimodal-deep-learning/data/tabular.RData")
 
 # super learner library

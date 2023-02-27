@@ -14,7 +14,7 @@
 # Number of nodes for use case:
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=30
+#SBATCH --cpus-per-task=1
 #SBATCH --exclusive
 #
 # Mail type:
