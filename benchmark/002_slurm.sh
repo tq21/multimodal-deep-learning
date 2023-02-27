@@ -3,9 +3,9 @@
 #SBATCH --job-name=multi_dl_sl_tabular
 #
 # Partition:
-#SBATCH --partition=savio3
+#SBATCH --partition=savio3_bigmem
 #
-#SBATCH --qos=biostat_savio3_normal
+#SBATCH --qos=savio_lowprio
 #SBATCH --account=co_biostat
 #
 # Wall clock limit ('0' for unlimited):
